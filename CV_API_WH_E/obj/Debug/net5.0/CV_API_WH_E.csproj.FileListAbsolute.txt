@@ -141,4 +141,5 @@ D:\File\GitHub\Billing_API\CV_API_WH_E\obj\Debug\net5.0\CV_API_WH_E.dll
 D:\File\GitHub\Billing_API\CV_API_WH_E\obj\Debug\net5.0\ref\CV_API_WH_E.dll
 D:\File\GitHub\Billing_API\CV_API_WH_E\obj\Debug\net5.0\CV_API_WH_E.pdb
 D:\File\GitHub\Billing_API\CV_API_WH_E\obj\Debug\net5.0\CV_API_WH_E.genruntimeconfig.cache
+D:\File\GitHub\Billing_API\CV_API_WH_E\bin\Debug\net5.0\Database\BillingDB.db
 D:\File\GitHub\Billing_API\CV_API_WH_E\obj\Debug\net5.0\CV_API_WH_E.csprojAssemblyReference.cache
