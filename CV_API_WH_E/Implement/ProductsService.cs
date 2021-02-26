@@ -1,4 +1,5 @@
 ﻿using CV_API_WH_E.Interface;
+using CV_API_WH_E.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace CV_API_WH_E.Implement
             return _impl.GetGroupingByUnblendedCostByAccountId(accountId);
         }
 
-        public Dictionary<string, string> GroupingByUsageAmount(string accountId)
+        public List<dailyUsage> GroupingByUsageAmount(string accountId)
         {
             return _impl.GetGroupingByUsageAmountByAccountId(accountId);
         }

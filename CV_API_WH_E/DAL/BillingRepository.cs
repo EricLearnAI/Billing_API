@@ -42,23 +42,25 @@ namespace CV_API_WH_E.DAL
             }
         }
 
-        public Dictionary<string, string> GetGroupingByUsageAmountByAccountId(string id)
+        public List<dailyUsage> GetGroupingByUsageAmountByAccountId(string id)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
+            List<dailyUsage> result = new List<dailyUsage>();
             using (var connection = (_databaseHelper.GetConnection()))
             {
                 connection.Open();
-                var cmd = new SQLiteCommand("SELECT ProductName, sum(UsageAmount) FROM Billing WHERE usageaccountid = $id GROUP BY productname", connection);
+                var cmd = new SQLiteCommand("SELECT ProductName, sum(UsageAmount), UsageStartDate, UsageEndDate FROM Billing WHERE usageaccountid = $id GROUP BY productname;", connection);
                 cmd.Parameters.AddWithValue("$id", id);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    var productName = (string)reader["ProductName"];
+                    var dailyUsage = new dailyUsage();
 
-                    var readUsageAmount = (double)reader["sum(UsageAmount)"];
-                    var UsageAmount = $"sum({readUsageAmount})";
+                    dailyUsage.ProductName = (string)reader["ProductName"];
+                    dailyUsage.UsageStartDate = (DateTime)reader["UsageStartDate"];
+                    dailyUsage.UsageEndDate = (DateTime)reader["UsageEndDate"];
+                    dailyUsage.UsageAmount = (double)reader["sum(UsageAmount)"];
 
-                    result.Add(productName, UsageAmount);
+                    result.Add(dailyUsage);
                 }
                 reader.Close();
 

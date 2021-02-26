@@ -7,5 +7,7 @@ namespace CV_API_WH_E.Response
 {
     public class RSPGetGroupingUsageAmount
     {
+        public string ProductName { get; set; }
+        public Dictionary<DateTime, string> DailyUsage { get; set; }
     }
 }
