@@ -48,7 +48,7 @@ namespace CV_API_WH_E.DAL
             using (var connection = (_databaseHelper.GetConnection()))
             {
                 connection.Open();
-                var cmd = new SQLiteCommand("SELECT ProductName, sum(UsageAmount), UsageStartDate, UsageEndDate FROM Billing WHERE usageaccountid = $id GROUP BY productname;", connection);
+                var cmd = new SQLiteCommand("SELECT ProductName, sum(UsageAmount), UsageStartDate, UsageEndDate FROM Billing WHERE usageaccountid = $id GROUP BY productname, UsageStartDate, UsageEndDate;", connection);
                 cmd.Parameters.AddWithValue("$id", id);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
