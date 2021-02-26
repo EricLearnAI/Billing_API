@@ -7,8 +7,8 @@ namespace CV_API_WH_E.Interface
 {
     public interface IProductsService
     {
-        Dictionary<string, double> GroupingByUnblendedCost(string accountId);
+        Dictionary<string, string> GroupingByUnblendedCost(string accountId);
 
-        Dictionary<string, double> GroupingByUsageAmount(string accountId);
+        Dictionary<string, string> GroupingByUsageAmount(string accountId);
     }
 }

@@ -613,11 +613,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\File\\GitHub\\CV_Billing_API\\CV_API_WH_E\\CV_API_WH_E.csproj",
+      "projectUniqueName": "D:\\File\\GitHub\\Billing_API\\CV_API_WH_E\\CV_API_WH_E.csproj",
       "projectName": "CV_API_WH_E",
-      "projectPath": "D:\\File\\GitHub\\CV_Billing_API\\CV_API_WH_E\\CV_API_WH_E.csproj",
+      "projectPath": "D:\\File\\GitHub\\Billing_API\\CV_API_WH_E\\CV_API_WH_E.csproj",
       "packagesPath": "C:\\Users\\Eric\\.nuget\\packages\\",
-      "outputPath": "D:\\File\\GitHub\\CV_Billing_API\\CV_API_WH_E\\obj\\",
+      "outputPath": "D:\\File\\GitHub\\Billing_API\\CV_API_WH_E\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

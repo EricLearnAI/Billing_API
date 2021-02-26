@@ -28,7 +28,6 @@ namespace CV_API_WH_E
               .SetBasePath(System.IO.Directory.GetCurrentDirectory())
               .AddJsonFile("appsettings.json");
             var Configuration = builder.Build();
-            //services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddControllers();
 

@@ -18,18 +18,21 @@ namespace CV_API_WH_E.DAL
             this._databaseHelper = databaseHelper;
         }
 
-        public Dictionary<string,double> GetGroupingByUnblendedCostByAccountId(string id)
+        public Dictionary<string, string> GetGroupingByUnblendedCostByAccountId(string id)
         {
-            Dictionary<string, double> result = new Dictionary<string, double>();
+            Dictionary<string, string> result = new Dictionary<string, string>();
             using (var connection = (_databaseHelper.GetConnection()))
             {
+                connection.Open();
                 var cmd = new SQLiteCommand("SELECT ProductName, sum(UnblendedCost) FROM Billing WHERE usageaccountid = $id GROUP BY productname", connection);
                 cmd.Parameters.AddWithValue("$id", id);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     var productName = (string)reader["ProductName"];
-                    var unblendedCost = (double)reader[" sum(UnblendedCost)"];
+
+                    var readunblendedCost = (double)reader["sum(UnblendedCost)"];
+                    var unblendedCost = $"sum({readunblendedCost})";
 
                     result.Add(productName, unblendedCost);
                 }
@@ -39,18 +42,21 @@ namespace CV_API_WH_E.DAL
             }
         }
 
-        public Dictionary<string, double> GetGroupingByUsageAmountByAccountId(string id)
+        public Dictionary<string, string> GetGroupingByUsageAmountByAccountId(string id)
         {
-            Dictionary<string, double> result = new Dictionary<string, double>();
+            Dictionary<string, string> result = new Dictionary<string, string>();
             using (var connection = (_databaseHelper.GetConnection()))
             {
+                connection.Open();
                 var cmd = new SQLiteCommand("SELECT ProductName, sum(UsageAmount) FROM Billing WHERE usageaccountid = $id GROUP BY productname", connection);
                 cmd.Parameters.AddWithValue("$id", id);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     var productName = (string)reader["ProductName"];
-                    var UsageAmount = (double)reader[" sum(UsageAmount)"];
+
+                    var readUsageAmount = (double)reader["sum(UsageAmount)"];
+                    var UsageAmount = $"sum({readUsageAmount})";
 
                     result.Add(productName, UsageAmount);
                 }

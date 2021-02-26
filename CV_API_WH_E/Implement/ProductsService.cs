@@ -14,12 +14,12 @@ namespace CV_API_WH_E.Implement
             _impl = impl;
         }
 
-        public Dictionary<string, double> GroupingByUnblendedCost(string accountId)
+        public Dictionary<string, string> GroupingByUnblendedCost(string accountId)
         {
             return _impl.GetGroupingByUnblendedCostByAccountId(accountId);
         }
 
-        public Dictionary<string, double> GroupingByUsageAmount(string accountId)
+        public Dictionary<string, string> GroupingByUsageAmount(string accountId)
         {
             return _impl.GetGroupingByUsageAmountByAccountId(accountId);
         }

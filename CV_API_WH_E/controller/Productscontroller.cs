@@ -22,8 +22,8 @@ namespace CV_API_WH_E.controller
         }
 
         // GET: api/Products/Grouping/UnblendedCost/610810069647
-        [HttpGet("Grouping/UnblendedCost/{UsageAccountid}")]
-        public ActionResult<Dictionary<string, double>> GetGroupingUnblendedCost(string accountid)
+        [HttpGet("Grouping/UnblendedCost/{accountid}")]
+        public ActionResult<Dictionary<string, string>> GetGroupingUnblendedCost(string accountid)
         {
             var result = _service.GroupingByUnblendedCost(accountid);
             if (result == null || result.Count <= 0)
@@ -35,10 +35,10 @@ namespace CV_API_WH_E.controller
         }
 
         // GET: api/Products/Grouping/UsageAmount/610810069647
-        [HttpGet("Grouping/UsageAmount/{UsageAccountid}")]
-        public ActionResult<Dictionary<string, double>> GetGroupingUsageAmount(string accountid)
+        [HttpGet("Grouping/UsageAmount/{accountid}")]
+        public ActionResult<Dictionary<string, string>> GetGroupingUsageAmount(string accountid)
         {
-            var result = _service.GroupingByUnblendedCost(accountid);
+            var result = _service.GroupingByUsageAmount(accountid);
             if (result == null || result.Count <= 0)
             {
                 return NotFound();

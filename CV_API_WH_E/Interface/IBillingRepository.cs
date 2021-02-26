@@ -7,7 +7,7 @@ namespace CV_API_WH_E.Interface
 {
     public interface IBillingRepository
     {
-        Dictionary<string, double> GetGroupingByUnblendedCostByAccountId(string id);
-        Dictionary<string, double> GetGroupingByUsageAmountByAccountId(string id);
+        Dictionary<string, string> GetGroupingByUnblendedCostByAccountId(string id);
+        Dictionary<string, string> GetGroupingByUsageAmountByAccountId(string id);
     }
 }
