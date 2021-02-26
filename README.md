@@ -4,9 +4,10 @@
 
 # URL
 HOST/api/Products/Grouping/UnblendedCost/{usageaccountid}
+
 HOST/api/Products/Grouping/UsageAmount/{usageaccountid}
 
-#DBSchema
+# schema
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
