@@ -31,11 +31,6 @@ namespace CV_API_WH_E
 
             services.AddControllers();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = ".net Core CE Billing API", Version = "v1" });
-            });
-
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddScoped<IProductsService, ProductsService>();
             services.AddScoped<IBillingRepository, BillingRepository>();
@@ -62,12 +57,6 @@ namespace CV_API_WH_E
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", ".net Core CE Billing API");
-                c.RoutePrefix = string.Empty;
             });
         }
     }
