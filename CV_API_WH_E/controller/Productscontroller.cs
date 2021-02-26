@@ -45,41 +45,24 @@ namespace CV_API_WH_E.controller
                 return NotFound();
             }
 
-            var grouplist = result.GroupBy(g => new { g.UsageStartDate, g.UsageEndDate });
-
             List<RSPGetGroupingUsageAmount> resp = new List<RSPGetGroupingUsageAmount>();
 
-            foreach (var item in grouplist)
+            foreach (var dailyusage in result)
             {
-                foreach (var dailyusage in item)
+                Dictionary<DateTime, string> daysUsage = new Dictionary<DateTime, string>();
+                var ts = dailyusage.UsageEndDate.Subtract(dailyusage.UsageStartDate);
+                for(int day = 0; day<=ts.Days;day++)
                 {
-                    Dictionary<DateTime, double> daysUsage = new Dictionary<DateTime, double>();
-                    var ts = dailyusage.UsageEndDate.Subtract(dailyusage.UsageStartDate);
-                    for (int day = 0; day <= ts.Days; day++)
-                    {
-                        var dayusage = dailyusage.UsageStartDate.AddDays(day);
-                        var usage = dailyusage.UsageAmount;
+                    var dayusage = dailyusage.UsageStartDate.AddDays(day);
+                    var usage = dailyusage.UsageAmount;
 
-                        daysUsage.Add(dayusage, usage);
-                    }
-                    RSPGetGroupingUsageAmount usageAmount = new RSPGetGroupingUsageAmount();
-                    usageAmount.ProductName = dailyusage.ProductName;
-
-                    foreach (var day in daysUsage.GroupBy(s => s.Key)) 
-                    {
-                        var singlediet = 0.0;
-                        foreach (var dayitem in day)
-                        {
-                            singlediet += dayitem.Value;
-                        }
-
-                        usageAmount.DailyUsage = new Dictionary<string, string>();
-                        usageAmount.DailyUsage.Add(day.Key.Date.ToShortDateString(), $"sum({singlediet})");
-
-                    }
-
-                    resp.Add(usageAmount);
+                    daysUsage.Add(dayusage, $"sum({usage})");
                 }
+                RSPGetGroupingUsageAmount usageAmount = new RSPGetGroupingUsageAmount();
+                usageAmount.ProductName = dailyusage.ProductName;
+                usageAmount.DailyUsage = daysUsage;
+
+                resp.Add(usageAmount);
             }
 
             return resp;
