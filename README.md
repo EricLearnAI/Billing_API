@@ -51,3 +51,6 @@ CREATE INDEX sqlite_autoindex_Billing_1 ON Billing (
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+
+# PS
+因SQLITEDB大小超過100M 故未上傳檔案
